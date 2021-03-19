@@ -37,7 +37,7 @@ struct ContentView: View {
                     Text("temp:")
                         .font(.callout)
                         .bold()
-                    TextField("temp", text: $tempInput)
+                    TextField("EnergyStep", text: $tempInput)
                         .padding()
                 }.padding()
                 
@@ -51,7 +51,11 @@ struct ContentView: View {
             
             
             HStack{
-                Button("text", action: {self.calculate()} )
+                Button("Shooting Methods", action: {self.calculate()} )
+                .padding()
+                Button("Runge Kutta 4th", action: {self.calculate2()})
+                .padding()
+                Button("Potential", action: {self.calculate3()})
                 .padding()
                 
             }
@@ -66,6 +70,16 @@ struct ContentView: View {
     /// calculate
     /// Function accepts the command to start the calculation from the GUI
     func calculate(){
+        //$calculator.energyStep_ = Double(tempInput)
+        //pass the plotDataModel to the cosCalculator
+        calculator.plotDataModel = self.plotDataModel
+        
+        //Calculate the new plotting data and place in the plotDataModel
+        calculator.shootingMethodPlot()
+        
+        
+    }
+    func calculate2(){
         
         //var temp = 0.0
         
@@ -73,7 +87,18 @@ struct ContentView: View {
         calculator.plotDataModel = self.plotDataModel
         
         //Calculate the new plotting data and place in the plotDataModel
-        calculator.shootingMethodPlot()
+        
+        calculator.rK4th()
+        
+        
+    }
+    func calculate3(){
+        //$calculator.energyStep_ = Double(tempInput)
+        //pass the plotDataModel to the cosCalculator
+        calculator.plotDataModel = self.plotDataModel
+        
+        //Calculate the new plotting data and place in the plotDataModel
+        calculator.PEx()
         
         
     }

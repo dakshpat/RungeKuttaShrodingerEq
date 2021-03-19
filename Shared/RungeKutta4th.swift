@@ -14,10 +14,28 @@ class potentialClass: ObservableObject {
     var V = 0.0
     var xMin = 0.0
     var xMax = 10.0        // 0 to pi so sin(xMin) = 0 sin(xMax) = 0 to start
+    var oneDPotentialXArray:[Double] = []
+    var oneDPotentialYArray:[Double] = []
+    var oneDPotentialArray:[Double] = []
+    var count = 0
+
     
     let hbar = 6.582119569e-16  // in eV*s
     let mElectronInEVOverCSquared = 0.510998950e6 / (299792458 * 299792458)
     let hbarSquaredOverElectronMass = 7.61996423107385308868    // ev * ang^2
+    func sqPotential() -> Double{
+        return -(2/hbarSquaredOverElectronMass)
+    }
+    func linearWell(xMin: Double, xMax:Double, xStep: Double){
+        for i in stride (from: xMin+xStep, through: xMax-xStep, by: xStep){
+            oneDPotentialXArray.append(i)
+            oneDPotentialYArray.append((i-xMin)*4.0*1.3)
+            count = oneDPotentialXArray.count
+            
+        }
+        print(oneDPotentialYArray)
+        print(oneDPotentialXArray)
+    }
     
 }   //end of potential class
 
@@ -52,7 +70,7 @@ class recursionClass: infiniteSquareWell {
         for xValue in stride(from: xMin, through: xMax, by: xSteps) {
             psiPrime.append(psiPrime[i] + psiDoublePrime[i]*deltaX)
             psi.append(psi[i] + psiPrime[i]*deltaX)
-            psiDoublePrime.append(-(2/hbarSquaredOverElectronMass) * psi[i+1] * energy)
+            psiDoublePrime.append(sqPotential() * psi[i+1] * energy)
             
             
             i += 1
@@ -97,7 +115,7 @@ func rKFourth(xSteps: Double, guessEnergy: Double) -> Double {
     for xValue in stride(from: xMin, through: xMax, by: xSteps) {
         psiPrime.append(psiPrime[i] + psiDoublePrime[i]*deltaX)
         psi.append(psi[i] + psiPrime[i]*deltaX)
-        psiDoublePrime.append(-(2/hbarSquaredOverElectronMass) * psi[i+1] * energy)
+        psiDoublePrime.append(sqPotential() * psi[i+1] * energy)
         //k1 = f(t,y)
         k1.append(psiPrime[i] + psiDoublePrime[i]*deltaX)
         y1.append(k1[i]*xSteps/2.0 + psiPrime[i])
