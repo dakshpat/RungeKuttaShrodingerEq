@@ -102,7 +102,8 @@ public struct CorePlot: ViewRepresentable {
         let linePlot = CPTScatterPlot(frame: .zero)
         linePlot.dataLineStyle = theLineStyle
         linePlot.identifier    = "Blue Plot" as NSString
-        linePlot.interpolation = .curved
+        linePlot.interpolation = .linear
+//        linePlot.interpolation = .curved
         newGraph.add(linePlot)
 
         // Add plot symbols

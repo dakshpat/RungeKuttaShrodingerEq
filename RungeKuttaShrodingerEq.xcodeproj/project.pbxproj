@@ -53,6 +53,8 @@
 		438E110025FC37FE00BF3D1A /* TextExportDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438E10E225FC37FE00BF3D1A /* TextExportDocument.swift */; };
 		438E110125FC37FE00BF3D1A /* TextExportDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438E10E225FC37FE00BF3D1A /* TextExportDocument.swift */; };
 		438E110225FC37FE00BF3D1A /* TextExportDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438E10E225FC37FE00BF3D1A /* TextExportDocument.swift */; };
+		B1AF686827C6FA03008E9129 /* InfiniteSquarePotential.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AF686627C6FA03008E9129 /* InfiniteSquarePotential.swift */; };
+		B1AF686A27C6FCB4008E9129 /* InfiniteSquarePotential.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AF686627C6FA03008E9129 /* InfiniteSquarePotential.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +98,7 @@
 		438E10DF25FC37FE00BF3D1A /* CorePlot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorePlot.swift; sourceTree = "<group>"; };
 		438E10E025FC37FE00BF3D1A /* CalculatePlotData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatePlotData.swift; sourceTree = "<group>"; };
 		438E10E225FC37FE00BF3D1A /* TextExportDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextExportDocument.swift; sourceTree = "<group>"; };
+		B1AF686627C6FA03008E9129 /* InfiniteSquarePotential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteSquarePotential.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +159,7 @@
 				438E10DE25FC37FE00BF3D1A /* ChangingPlotParameters.swift */,
 				438E10DF25FC37FE00BF3D1A /* CorePlot.swift */,
 				438E10DC25FC37FE00BF3D1A /* operators.swift */,
+				B1AF686627C6FA03008E9129 /* InfiniteSquarePotential.swift */,
 				438E10DD25FC37FE00BF3D1A /* PlotDataClass.swift */,
 				438E10E225FC37FE00BF3D1A /* TextExportDocument.swift */,
 				438E10DB25FC37FE00BF3D1A /* TextView.swift */,
@@ -394,6 +398,7 @@
 				438E10FF25FC37FE00BF3D1A /* TextExportDocument.swift in Sources */,
 				438E10E325FC37FE00BF3D1A /* TextView.swift in Sources */,
 				438E10E725FC37FE00BF3D1A /* operators.swift in Sources */,
+				B1AF686827C6FA03008E9129 /* InfiniteSquarePotential.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +417,7 @@
 				438E110025FC37FE00BF3D1A /* TextExportDocument.swift in Sources */,
 				438E10E425FC37FE00BF3D1A /* TextView.swift in Sources */,
 				438E10E825FC37FE00BF3D1A /* operators.swift in Sources */,
+				B1AF686A27C6FCB4008E9129 /* InfiniteSquarePotential.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,9 +633,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = CHZ9R6RDJ8;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
@@ -638,7 +645,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = anthony.lim.iit.RungeKuttaShrodingerEq;
+				PRODUCT_BUNDLE_IDENTIFIER = RungeKuttaShrodingerEq;
 				PRODUCT_NAME = RungeKuttaShrodingerEq;
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
@@ -651,9 +658,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = CHZ9R6RDJ8;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
@@ -662,7 +670,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = anthony.lim.iit.RungeKuttaShrodingerEq;
+				PRODUCT_BUNDLE_IDENTIFIER = RungeKuttaShrodingerEq;
 				PRODUCT_NAME = RungeKuttaShrodingerEq;
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
