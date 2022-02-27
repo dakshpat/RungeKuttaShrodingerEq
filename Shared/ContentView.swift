@@ -25,7 +25,7 @@ struct ContentView: View {
         HStack{
             VStack{
                 
-                Menu("Calculate Functional") {
+                Menu("RK1") {
                     
                     Button("Square Well", action: {self.calculateFunctional(potentialType: "Square Well")})
                     Button("Linear Well", action: {self.calculateFunctional(potentialType: "Linear Well")})
@@ -34,10 +34,15 @@ struct ContentView: View {
                 .padding()
                 .frame(width: 200)
             
-        
+                Menu("Runge Kutta 4th") {
+                    
+                    Button("Square Well", action: {self.calculateFunctional2(potentialType: "Square Well")})
+                    Button("Linear Well", action: {self.calculateFunctional2(potentialType: "Linear Well")})
+                    Button("Parabola", action: {self.calculateFunctional2(potentialType: "Parabola")})
+                }
+                .padding()
+                .frame(width: 200)
                 
-//                Button("Runge Kutta 4th", action: {self.calculate2()})
-//                .padding()
                 
                 Menu("Potential") {
                     
@@ -104,19 +109,39 @@ func calculateFunctional(potentialType: String){
 
     }
     
-//    func calculate2(){
-//
-//        //var temp = 0.0
-//
-//        //pass the plotDataModel to the cosCalculator
-//        calculator.plotDataModel = self.plotDataModel
-//
-//        //Calculate the new plotting data and place in the plotDataModel
-//
-//        calculator.rK4th()
-//
-//
-//    }
+    func calculateFunctional2(potentialType: String){
+            
+            var potentialVal = [Double]()
+            
+            
+            switch potentialType {
+            
+                case "Square Well":
+                    potentials.zero()
+                    
+                case "Linear Well":
+                    potentials.yEqualsX()
+                
+                case "Parabola":
+                    potentials.parabola()
+                
+                default:
+                    potentials.zero()
+            }
+        
+            for item in potentials.potentialArray{
+                potentialVal.append(item.yPoint)
+            }
+        
+                //$calculator.energyStep_ = Double(tempInput)
+                //pass the plotDataModel to the cosCalculator
+                calculator.plotDataModel = self.plotDataModel
+                
+                //Calculate the new plotting data and place in the plotDataModel
+                calculator.rK4th(potential: potentialVal)
+
+        }
+    
     
     func selectPotential(potentialType: String) {
         switch potentialType {
@@ -143,24 +168,6 @@ func calculateFunctional(potentialType: String){
 
         
     }
-    
-//    func potentialType(type: String){
-//
-//        potentials.parabola()
-//
-//
-//        //$calculator.energyStep_ = Double(tempInput)
-//        //pass the plotDataModel to the cosCalculator
-//        calculator.plotDataModel = self.plotDataModel
-//
-//        //Calculate the new plotting data and place in the plotDataModel
-//        calculator.PEx(dataPoints: potentials.potentialArray)
-//
-//
-//    }
-    
-
-   
     
 
 

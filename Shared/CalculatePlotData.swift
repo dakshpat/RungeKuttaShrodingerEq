@@ -59,38 +59,38 @@ class CalculatePlotData: ObservableObject {
     }
     
     
-//    func rK4th (){
-//
-//        plotDataModel!.changingPlotParameters.yMax = 10.0
-//        plotDataModel!.changingPlotParameters.yMin = -5.0
-//        plotDataModel!.changingPlotParameters.xMax = 10.0
-//        plotDataModel!.changingPlotParameters.xMin = -5.0
-//        plotDataModel!.changingPlotParameters.xLabel = "x"
-//        plotDataModel!.changingPlotParameters.yLabel = "y"
-//        plotDataModel!.changingPlotParameters.lineColor = .red()
-//        plotDataModel!.changingPlotParameters.title = " y = x"
-//        plotDataModel!.zeroData()
-//
-//
-//        var plotData :[plotDataType] =  []
-//        //let eMin = 0.0
-//        //let eMax = 20.0
-//        for energy in stride(from: eMin, through: eMax, by: energyStep) {
-//
-//            let functionalValue = recursion.rKFourth(xSteps: energyStep, guessEnergy: energy)
-//
-//            let dataPoint: plotDataType = [.X: energy, .Y: functionalValue] // create single point?
-//            plotData.append(contentsOf: [dataPoint]) // append single point to an array?
-//
-//
-//
-//
-//        }
-//
-//        plotDataModel!.appendData(dataPoint: plotData)
-//
-//
-//    }
+    func rK4th (potential: [Double]){
+
+        plotDataModel!.changingPlotParameters.yMax = 10.0
+        plotDataModel!.changingPlotParameters.yMin = -5.0
+        plotDataModel!.changingPlotParameters.xMax = 10.0
+        plotDataModel!.changingPlotParameters.xMin = -5.0
+        plotDataModel!.changingPlotParameters.xLabel = "x"
+        plotDataModel!.changingPlotParameters.yLabel = "y"
+        plotDataModel!.changingPlotParameters.lineColor = .red()
+        plotDataModel!.changingPlotParameters.title = " y = x"
+        plotDataModel!.zeroData()
+
+
+        var plotData :[plotDataType] =  []
+        //let eMin = 0.0
+        //let eMax = 20.0
+        for energy in stride(from: eMin, through: eMax, by: energyStep) {
+
+            let functionalValue = recursion.rKFourth(xSteps: energyStep, guessEnergy: energy,potential: potential)
+
+            let dataPoint: plotDataType = [.X: energy, .Y: functionalValue] // create single point?
+            plotData.append(contentsOf: [dataPoint]) // append single point to an array?
+
+
+
+
+        }
+
+        plotDataModel!.appendData(dataPoint: plotData)
+
+
+    }
     
     
     func PEx(dataPoints: [(xPoint: Double, yPoint: Double)]){
