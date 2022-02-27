@@ -119,30 +119,5 @@ class CalculatePlotData: ObservableObject {
         
 }
     
-    func plotPsi(){
-        
-
-        for item in dataPoints{
-            
-            let x = item.xPoint
-            let y = item.yPoint
-            
-            let dataPoint: plotDataType = [.X: x, .Y: y]
-            plotData.append(contentsOf: [dataPoint])
-        }
-        
-        plotDataModel!.changingPlotParameters.yMax = 30.0
-        plotDataModel!.changingPlotParameters.yMin = -5.0
-        plotDataModel!.changingPlotParameters.xMax = 10.0
-        plotDataModel!.changingPlotParameters.xMin = -5.0
-        plotDataModel!.changingPlotParameters.xLabel = "x"
-        plotDataModel!.changingPlotParameters.yLabel = "y"
-        plotDataModel!.changingPlotParameters.lineColor = .red()
-        plotDataModel!.changingPlotParameters.title = " y = x"
-        plotDataModel!.zeroData()
-        plotDataModel!.appendData(dataPoint: plotData)
-
-        
-}
 
 }
