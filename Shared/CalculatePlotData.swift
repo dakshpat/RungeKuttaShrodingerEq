@@ -9,10 +9,10 @@ import Foundation
 import SwiftUI
 import CorePlot
 
-class CalculatePlotData: ObservableObject {
-    var energyStep = 0.10
-    let eMin = 0.0
-    let eMax = 50.0
+class CalculatePlotData: NSObject, ObservableObject {
+    @Published var energyStep = 0.10
+    @Published var eMin = 0.0
+    @Published var eMax = 50.0
     var plotData :[plotDataType] =  []
     var oneDPotentialXArray:[Double] = []
     var oneDPotentialYArray:[Double] = []
@@ -30,10 +30,10 @@ class CalculatePlotData: ObservableObject {
         plotDataModel!.changingPlotParameters.yMin = -5.0
         plotDataModel!.changingPlotParameters.xMax = 10.0
         plotDataModel!.changingPlotParameters.xMin = -5.0
-        plotDataModel!.changingPlotParameters.xLabel = "x"
-        plotDataModel!.changingPlotParameters.yLabel = "y"
+        plotDataModel!.changingPlotParameters.xLabel = "Energy(eV)"
+        plotDataModel!.changingPlotParameters.yLabel = "Psi"
         plotDataModel!.changingPlotParameters.lineColor = .red()
-        plotDataModel!.changingPlotParameters.title = " y = x"
+        plotDataModel!.changingPlotParameters.title = "Functional"
         plotDataModel!.zeroData()
         
         
@@ -65,10 +65,10 @@ class CalculatePlotData: ObservableObject {
         plotDataModel!.changingPlotParameters.yMin = -5.0
         plotDataModel!.changingPlotParameters.xMax = 10.0
         plotDataModel!.changingPlotParameters.xMin = -5.0
-        plotDataModel!.changingPlotParameters.xLabel = "x"
-        plotDataModel!.changingPlotParameters.yLabel = "y"
+        plotDataModel!.changingPlotParameters.xLabel = "Energy(eV)"
+        plotDataModel!.changingPlotParameters.yLabel = "Psi"
         plotDataModel!.changingPlotParameters.lineColor = .red()
-        plotDataModel!.changingPlotParameters.title = " y = x"
+        plotDataModel!.changingPlotParameters.title = "Functional"
         plotDataModel!.zeroData()
 
 
@@ -119,5 +119,40 @@ class CalculatePlotData: ObservableObject {
         
 }
     
+    
+    
+    func plotPsi(energy: Double, potential: [Double])
+    {
+        
+        plotDataModel!.changingPlotParameters.yMax = 10.0
+        plotDataModel!.changingPlotParameters.yMin = -5.0
+        plotDataModel!.changingPlotParameters.xMax = 10.0
+        plotDataModel!.changingPlotParameters.xMin = -5.0
+        plotDataModel!.changingPlotParameters.xLabel = "Energy(eV)"
+        plotDataModel!.changingPlotParameters.yLabel = "Psi"
+        plotDataModel!.changingPlotParameters.lineColor = .red()
+        plotDataModel!.changingPlotParameters.title = "Functional"
+        plotDataModel!.zeroData()
+        
+
+        var plotData :[plotDataType] =  []
+        //let eMin = 0.0
+        //let eMax = 10.0
+        
+            
+        let PsiPoints = recursion.PlotPsi(deltaX: energyStep, energy: energy, potential: potential)
+        
+        for points in PsiPoints{
+            
+            let dataPoint: plotDataType = [.X: points.xPoint, .Y: points.yPoint]
+            
+            plotData.append(contentsOf: [dataPoint])
+        }
+            
+
+        plotDataModel!.appendData(dataPoint: plotData)
+        
+        
+    }
 
 }

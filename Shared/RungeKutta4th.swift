@@ -34,6 +34,7 @@ class potentialClass: ObservableObject {
 class recursionClass: potentialClass {
     
     @ObservedObject var waveFuncArrays = waveFunctionArrayClass()
+    var psiArray = [(xPoint: Double, yPoint: Double)]()
                 
     func shootingMethod(xSteps: Double, guessEnergy: Double, potential: [Double]) -> Double {
 
@@ -66,11 +67,7 @@ class recursionClass: potentialClass {
             i += 1
             
         }
-        
-        // need to append psi prime and psi to their own sets of y points
-        waveFuncArrays.psiArray.append(psi)
-        waveFuncArrays.psiPrimeArray.append(psiPrime)
-    
+
         //return plotData for now
         return psi[psi.count-1]
         
@@ -126,13 +123,49 @@ class recursionClass: potentialClass {
 
     }
 
-// need to append psi prime and psi to their own sets of y points
-        waveFuncArrays.psiArray.append(psi)
-        waveFuncArrays.psiPrimeArray.append(eSt)
-
         //return plotData for now
         return eSt[eSt.count-1]
 
 }
+    
+    
+    
+    func PlotPsi(deltaX: Double, energy: Double, potential: [Double]) -> [(xPoint:Double, yPoint:Double)] {
+
+        
+        var psi: [Double] = []
+        var psiPrime: [Double] = []
+        var psiDoublePrime: [Double] = []
+        var point = (xPoint: 0.0, yPoint: 0.0)
+        
+        var i = 0
+        
+        // start with a guess for the slope at zero, and 2nd derivative of psi equal to zero
+        psiPrime.append(5.0)
+        psi.append(0.0)
+        
+        let psiPrimeBounder = ((potential[i]-energy)*sqPotential()*psi[i])
+        psiDoublePrime.append(psiPrimeBounder)
+        
+        
+        for xPoint in stride(from: xMin, to: xMax, by: deltaX) {
+            
+            let V = potential[i]
+            
+            psiPrime.append(psiPrime[i] + psiDoublePrime[i]*deltaX)
+            psi.append(psi[i] + psiPrime[i]*deltaX)
+            psiDoublePrime.append(sqPotential() * psi[i+1] * (energy-V))
+            
+            point.xPoint = xPoint
+            point.yPoint = psi[i]
+            psiArray.append(point)
+            
+            i += 1
+            
+        }
+        
+        return psiArray
+        
+    }
 
 }

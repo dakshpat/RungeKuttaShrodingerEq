@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import CorePlot
 
 @main
 struct RungeKuttaShrodingerEqApp: App {
-    
+
     @StateObject var plotDataModel = PlotDataClass(fromLine: true)
     
     var body: some Scene {
@@ -20,6 +21,7 @@ struct RungeKuttaShrodingerEqApp: App {
                     .tabItem {
                         Text("Plot")
                     }
+                
                 TextView()
                     .environmentObject(plotDataModel)
                     .tabItem {

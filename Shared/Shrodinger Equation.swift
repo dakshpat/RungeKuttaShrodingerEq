@@ -8,7 +8,7 @@
 import Foundation
 class waveFunctionArrayClass: ObservableObject {
     
-    var psiArray: [[Double]] = []
+    var psiArray = [(xPoint: Double, yPoint: Double)]()
     var psiPrimeArray: [[Double]] = []
     
 }

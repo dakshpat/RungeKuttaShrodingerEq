@@ -12,18 +12,33 @@ typealias plotDataType = [CPTScatterPlotField : Double]
 
 struct ContentView: View {
     @EnvironmentObject var plotDataModel :PlotDataClass
-    @ObservedObject private var calculator = CalculatePlotData()
+    @ObservedObject var calculator = CalculatePlotData()
     @ObservedObject var potentials = InfiniteSquarePotentials()
+    @State var stringMaxEnergy = ""
+    @State var stringEnergyStep = ""
 
     @State var isChecked:Bool = false
     @State var tempInput = ""
   
-    
 
     var body: some View {
         
         HStack{
             VStack{
+                
+                
+                HStack {
+                    Text("Max energy:")
+                    TextField("energyMax: ", text: $stringMaxEnergy)
+                        .frame(width: 100)
+                }
+                
+                HStack {
+                    Text("Energy Step:")
+                    TextField("Energy Step: ", text: $stringEnergyStep)
+                        .frame(width: 100)
+                }
+                
                 
                 Menu("RK1") {
                     
@@ -110,6 +125,9 @@ func calculateFunctional(potentialType: String){
     }
     
     func calculateFunctional2(potentialType: String){
+        
+        calculator.eMax = Double(stringMaxEnergy)!
+        calculator.energyStep = Double(stringEnergyStep)!
             
             var potentialVal = [Double]()
             
