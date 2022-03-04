@@ -81,9 +81,8 @@ class CalculatePlotData: NSObject, ObservableObject {
 
             let dataPoint: plotDataType = [.X: energy, .Y: functionalValue] // create single point?
             plotData.append(contentsOf: [dataPoint]) // append single point to an array?
-
-
-
+            
+            print(functionalValue)
 
         }
 

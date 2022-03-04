@@ -14,8 +14,8 @@ struct ContentView: View {
     @EnvironmentObject var plotDataModel :PlotDataClass
     @ObservedObject var calculator = CalculatePlotData()
     @ObservedObject var potentials = InfiniteSquarePotentials()
-    @State var stringMaxEnergy = ""
-    @State var stringEnergyStep = ""
+    @State var stringMaxEnergy = "50.0"
+    @State var stringEnergyStep = "0.1"
 
     @State var isChecked:Bool = false
     @State var tempInput = ""
@@ -67,7 +67,27 @@ struct ContentView: View {
                 }
                 .padding()
                 .frame(width: 200)
+                
+                Button("Plot Psi"){
+                    var potentialVal = [Double]()
+                    potentials.zero()
+                    
+                    for item in potentials.potentialArray{
+                        potentialVal.append(item.yPoint)
+                    }
+                
+                        //$calculator.energyStep_ = Double(tempInput)
+                        //pass the plotDataModel to the cosCalculator
+                        calculator.plotDataModel = self.plotDataModel
+                        
+                        //Calculate the new plotting data and place in the plotDataModel
+                    calculator.plotPsi(energy: 1.5 , potential: potentialVal)
+                    
+                }
+                
+                
             }
+            
             
             Divider()
             
