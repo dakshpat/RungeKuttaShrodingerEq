@@ -16,7 +16,8 @@ struct ContentView: View {
     @ObservedObject var potentials = InfiniteSquarePotentials()
     @State var stringMaxEnergy = "50.0"
     @State var stringEnergyStep = "0.1"
-
+    @State var StringNodeNumber = ""
+    
     @State var isChecked:Bool = false
     @State var tempInput = ""
   
@@ -68,9 +69,18 @@ struct ContentView: View {
                 .padding()
                 .frame(width: 200)
                 
+                HStack {
+                    Text("Node number:")
+                    TextField("n: ", text: $StringNodeNumber)
+                        .frame(width: 100)
+                }
+                
                 Button("Plot Psi"){
                     var potentialVal = [Double]()
                     potentials.zero()
+                    let n = Double(StringNodeNumber)!
+                    
+                    let E = pow(n,2)*7.61996423107385308868/(8*100)
                     
                     for item in potentials.potentialArray{
                         potentialVal.append(item.yPoint)
@@ -81,7 +91,7 @@ struct ContentView: View {
                         calculator.plotDataModel = self.plotDataModel
                         
                         //Calculate the new plotting data and place in the plotDataModel
-                    calculator.plotPsi(energy: 1.5 , potential: potentialVal)
+                    calculator.plotPsi(energy: E , potential: potentialVal)
                     
                 }
                 
